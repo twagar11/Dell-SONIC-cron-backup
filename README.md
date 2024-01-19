@@ -19,7 +19,7 @@ In the near future I plan to substitute cron scheduler for systemd timers
   
   Python = 3.6.9
   
-  Asnible = 2.10.11
+  Ansible = 2.10.11
   
   Dell SONiC = 3.2
   
@@ -36,7 +36,9 @@ In the near future I plan to substitute cron scheduler for systemd timers
 Sample Ansible node directory structure
 
 gns3@gns3:/home/labuser/module1/Scripts$ tree
+
 .
+
 ├── backup
 
 │   ├── Switch1
