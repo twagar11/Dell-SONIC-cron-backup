@@ -35,6 +35,10 @@ This small repo is indended to provide a simple way to schedule weekly backups o
 
 Ansible playbook = pb_backup.yaml
 
+Ansible inventory - inventory.yaml
+
+Execution (run from ../Scripts/ = ansible-playbook -i inventory.yaml pb_backup.yaml
+
 Dell SONiC switch running-config is stored on switch /etc/sonic/config_db.json
 
 First part of playbook will loop and make a copy of the config_db.json on every switch /home/admin/switch.json
