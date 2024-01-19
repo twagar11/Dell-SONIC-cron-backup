@@ -1,0 +1,30 @@
+- hosts: all
+  gather_facts: false
+  tasks:
+
+# on switch create temp copy of config_db.json
+# from /etc/sonic/config_db.json to /home/admin/switch.json
+
+  - name: "Copy config_db.json switch.json"
+    become: yes
+    become_user: root
+    become_method: sudo
+# simple loop to save a temp switch.json file on each switch in inventory file
+    command: "{{ item }}"
+    with_items:
+      - config save "/home/admin/switch.json" -y
+
+# copy file from switch to Ansible node
+# from /home/admin/switch.json to /home/labuser/module1/Scripts/configs
+# playbook is run from /home/labuser/module1/Scripts
+# backup/ directory is created under /home/labuser/module1/Scripts
+# in backup/ directory new directories for each switch hostname created
+# switch.json is created in each switch hostname subdirectory
+
+  - name: "Copy switch.json to Ansible server"
+    become: yes
+    become_user: root
+    become_method: sudo
+    fetch:
+        src: switch.json
+        dest: "backup/"

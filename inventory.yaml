@@ -1,0 +1,18 @@
+Switch1 ansible_host=192.168.1.21
+Switch2 ansible_host=192.168.1.22
+
+[switch]
+Switch1
+Switch2
+
+[all:children]
+switch
+
+[switch:vars]
+ansible_ssh_user=admin
+ansible_ssh_pass=admin
+ansible_network_os=dellemc.enterprise_sonic.sonic
+ansible_connnection=network_cli
+# ansible_python_interpreter=/usr/bin/python3
+# ansible_httpapi_use_ssl=true
+# ansible_httpapi_validate_certs=false
