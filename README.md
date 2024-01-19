@@ -4,6 +4,11 @@
 
 This small repo is indended to provide a simple way to schedule weekly backups of all your Dell SONiC switches using a simple Ansible playbook and schedule using a cron job which runs from the Linus ansible node
 
+## Current Issues
+
+***** As of 1/19/24 Ubuntu cron scheduler recieves MTA not installed error and does not execute ******
+In the near future I plan to substitute cron scheduler for systemd timers
+
 ## Requirements
 
   The intention of this repo is to provide a working example to use as a building block within your own automation infrastructure.  A sample directory structure as well as code versions are included.  It is assumed the use of this repo will modify for you specific environment.
