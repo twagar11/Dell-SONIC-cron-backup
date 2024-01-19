@@ -20,7 +20,7 @@ This small repo is indended to provide a simple way to schedule weekly backups o
   
   Dell SONiC latest collections can be installed from Ansible Galaxy
   
-  $ ansible-galaxy collection install dellemc.enterprise_sonic ![image](https://github.com/twagar11/Dell-SONIC-cron-backup/assets/11443526/dd63509b-955f-4f1d-8717-810903a592e2)
+  ansible-galaxy collection install dellemc.enterprise_sonic
   
   Ansible.netcommon = 2.2.0
   
@@ -35,9 +35,9 @@ This small repo is indended to provide a simple way to schedule weekly backups o
 
 Ansible playbook = pb_backup.yaml
 
-Ansible inventory - inventory.yaml
+Ansible inventory = inventory.yaml
 
-Execution (run from ../Scripts/ = ansible-playbook -i inventory.yaml pb_backup.yaml
+Execution (run from ../Scripts/ ) = ansible-playbook -i inventory.yaml pb_backup.yaml
 
 Dell SONiC switch running-config is stored on switch /etc/sonic/config_db.json
 
