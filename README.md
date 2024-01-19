@@ -33,19 +33,33 @@ Sample Ansible node directory structure
 gns3@gns3:/home/labuser/module1/Scripts$ tree
 .
 ├── backup
+
 │   ├── Switch1
+
 │   │   └── switch.json
+
 │   └── Switch2
+
 │       └── switch.json
+
 ├── group_vars
+
 │   └── oldall
+
 ├── group_vars.yaml
+
 ├── host_vars
+
 │   ├── Switch1.yaml
+
 │   └── Switch2.yaml
+
 ├── inventory.yaml
+
 ├── pb_backup.yaml
+
 └── templates
+
     └── clis.j2
 
 ## Phase 1 (Create Backup Playbook and Schedule weekly execution with cron)
