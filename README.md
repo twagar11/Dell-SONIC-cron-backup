@@ -2,12 +2,11 @@
 
 ## Description and Objective
 
-This small repo is indended to provide a simple way to schedule weekly backups of all your Dell SONiC switches using a simple Ansible playbook and schedule using a cron job which runs from the Linus ansible node
+This small repo is indended to provide a simple way to schedule weekly backups of all your Dell SONiC switches using a simple Ansible playbook and schedule using native systemD timers and launched from an Ansible node
 
 ## Current Issues
 
-***** As of 1/19/24 Ubuntu cron scheduler recieves MTA not installed error and does not execute ******
-In the near future I plan to substitute cron scheduler for systemd timers
+***** As of 7-10-24 working to convert logic from cron job to systemD timers.
 
 ## Requirements
 
@@ -21,7 +20,7 @@ In the near future I plan to substitute cron scheduler for systemd timers
   
   Ansible = 2.10.11
   
-  Dell SONiC = 3.2
+  Dell SONiC = 4.2
   
   Dell SONiC latest collections can be installed from Ansible Galaxy
   
@@ -69,7 +68,7 @@ gns3@gns3:/home/labuser/module1/Scripts$ tree
 
     └── clis.j2
 
-## Phase 1 (Create Backup Playbook and Schedule weekly execution with cron)
+## Phase 1 (Create Backup Playbook and Schedule weekly execution with systemD)
 
 Ansible playbook = pb_backup.yaml
 
@@ -79,16 +78,15 @@ Execution (run from ../Scripts/ ) = ansible-playbook -i inventory.yaml pb_backup
 
 Dell SONiC switch running-config is stored on switch /etc/sonic/config_db.json
 
-First part of playbook will loop and make a copy of the config_db.json on every switch /home/admin/switch.json
+First part of playbook will loop and make a copy of the config_db.json on every switch and stored in /home/admin/switch.json
 
-Second part will copy switch.json to Ansible node, create "backup/" directory and switch hostname subdirectories for each switch
+Second part will copy switch.json to Ansible node, create "backup/" directory and create hostname subdirectories for each switch
 
-Crontab -e is used to edit user specific cron job to schedule pb_backup.yaml playbook to run every sunday at midnight
+Create a systemd service file to run ansible playbook pb_backup.yaml
 
-***** As of 1/19/24 Ubuntu cron scheduler recieves MTA not installed error and does not execute ******
-
+Create a systemd timer unit to run backup service once every week
 
 ## Phase 2 (Create Restore Playbook to push backup json to switch)
 
-TBD
+Work in progress
 
