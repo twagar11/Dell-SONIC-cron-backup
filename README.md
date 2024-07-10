@@ -1,4 +1,4 @@
-# Dell-SONIC-cron-backup
+# Dell-SONIC-systemd-backup
 
 ## Description and Objective
 
